@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> //para hacer las búsquedas
 
 // Definición de la estructura del jugador
 struct Jugador {
@@ -29,18 +29,20 @@ void mostrarJugadores(const char *fichero) {
 
 // Función para actualizar un jugador directamente en el fichero
 void actualizarJugadorPorID(const char *fichero, int id, int nuevoNivel, int nuevosPuntos) {
-    FILE *file = fopen(fichero, "rb+"); // Abrir en modo lectura/escritura binaria
+    FILE *file = fopen(fichero, "rb+"); // Abrir en modo lectura/escritura binaria + es actualizar
     if (file == NULL) {
         perror("Error al abrir el fichero");
         return;
     }
 
     // Calcular la posición del jugador en el fichero
-    long offset = id * sizeof(struct Jugador);
+    long offset = id * sizeof(struct Jugador); //long es como int pero con más capacidad
+    //0 x cualquier cosa es 0, por lo tanto es Juan
+    //ID multiplicado por EL TAMAÑO DE LA ESTRUCTURA, la que sea, si son 10bytes p.e., entonces Ana será 1x10bytes que tendrá que avanazar para localizarla.
 
     // Mover el puntero del fichero a la posición deseada
-    if (fseek(file, offset, SEEK_SET) != 0) {
-        perror("Error al mover el puntero del fichero");
+    if (fseek(file, offset, SEEK_SET) != 0) { //esta funcion busca la posicion en bytes dentro del fichero
+        perror("Error al mover el puntero del fichero");//si regresa un valor diferente a 0 entonces ha funcionado
         fclose(file);
         return;
     }

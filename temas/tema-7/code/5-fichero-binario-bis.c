@@ -11,11 +11,11 @@ struct Jugador {
 int main() {
     // Definir un array de jugadores con datos arbitrarios
     struct Jugador jugadores[] = {
-        {"Juan", 5, 1200},
-        {"Ana", 3, 800},
-        {"Luis", 7, 1500},
-        {"María", 2, 600},
-        {"Carlos", 4, 1000}
+        {"Juan", 5, 1200}, //este será el 0
+        {"Ana", 3, 800}, //este el 1
+        {"Luis", 7, 1500}, //este el 2
+        {"María", 2, 600}, //este el 3
+        {"Carlos", 4, 1000} //este el 4, comprobar en binario-buscar
     };
     int numJugadores = sizeof(jugadores) / sizeof(jugadores[0]); // Número de jugadores en el array
 

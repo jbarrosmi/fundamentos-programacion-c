@@ -59,7 +59,7 @@ int main() {
         } else {
             printf("¡Es un empate!\n");
         }
-s
+
         // Actualizar puntuación
         jugador1.puntos += tiro1; // Sumar puntos al jugador 1
         jugador2.puntos += tiro2; // Sumar puntos al jugador 2

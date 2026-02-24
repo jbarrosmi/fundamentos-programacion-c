@@ -33,7 +33,7 @@ int main() {
     // 5. Leer y mostrar el contenido del fichero
     printf("Contenido del fichero '%s':\n", nombre_fichero);
     char linea[256]; //conveniencia tamaño pantalla, se mostrará el texto de 256 en 256 caracteres.
-    while (fgets(linea, sizeof(linea), fichero) != NULL) {
+    while (fgets(linea, sizeof(linea), fichero) != NULL) { //buffer para almacenar cada línea, tamaño de la línea (256), mientras la función sea capa de extraer información del fichero
         printf("%s", linea); // Mostrar cada línea de 256 caracteres recursivamente
     }
 

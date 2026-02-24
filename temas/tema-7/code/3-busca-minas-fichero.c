@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <stdbool.h>
+#include <time.h> //para numeros aleatorios
+#include <stdbool.h> //para booleanos
 
 // Dimensiones del mapa
 #define FILAS 5
@@ -23,10 +23,10 @@ void generarMapaAleatorio(char mapa[FILAS][COLUMNAS], int numMinas) {
     srand(time(NULL));
     int minasColocadas = 0;
     while (minasColocadas < numMinas) {
-        int fila = rand() % FILAS;
+        int fila = rand() % FILAS; //rand DESDE 0 hasta (%) FILAS
         int columna = rand() % COLUMNAS;
 
-        if (mapa[fila][columna] != '*') {
+        if (mapa[fila][columna] != '*') { //si mapaxcolumna es diferente a MINA, se coloca una
             mapa[fila][columna] = '*';
             minasColocadas++;
         }
@@ -41,7 +41,7 @@ void generarMapaAleatorio(char mapa[FILAS][COLUMNAS], int numMinas) {
 
     for (int i = 0; i < FILAS; i++) {
         for (int j = 0; j < COLUMNAS; j++) {
-            fprintf(fichero, "%c ", mapa[i][j]);
+            fprintf(fichero, "%c ", mapa[i][j]); //bucle para guardar cada caracter del mapa
         }
         fprintf(fichero, "\n");
     }
@@ -68,7 +68,7 @@ void cargarMapaDesdeFichero(char mapa[FILAS][COLUMNAS]) {
 }
 
 // Función para imprimir el mapa actual (sin mostrar minas)
-void imprimirMapa(char mapa[FILAS][COLUMNAS], bool mostrarMinas) {
+void imprimirMapa(char mapa[FILAS][COLUMNAS], bool mostrarMinas) { //bool, si mostrarminas es falso muestra guiones, si es verdadedro muestra todo
     for (int i = 0; i < FILAS; i++) {
         for (int j = 0; j < COLUMNAS; j++) {
             // Si mostrarMinas es falso, reemplazar las minas con guiones
