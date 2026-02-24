@@ -5,7 +5,7 @@ int main() {
     const char *nombre_fichero = "ficheros\\el_quijote.txt";
 
     // 1. Crear y abrir el fichero en modo escritura
-    FILE *fichero = fopen(nombre_fichero, "w");
+    FILE *fichero = fopen(nombre_fichero, "w"); //"a" añade información sin borrar lo anterior
     if (fichero == NULL) {
         perror("Error al crear el fichero");
         return 1;
@@ -18,6 +18,7 @@ int main() {
     fprintf(fichero, "no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. "
                      "Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, "
                      "lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.\n");
+                     //esta forma de escritura se llama concatenación, para evitar que se genere una línea entera de texto.
 
     // Cerrar el fichero después de escribir
     fclose(fichero);
@@ -31,9 +32,9 @@ int main() {
 
     // 5. Leer y mostrar el contenido del fichero
     printf("Contenido del fichero '%s':\n", nombre_fichero);
-    char linea[256];
+    char linea[256]; //conveniencia tamaño pantalla, se mostrará el texto de 256 en 256 caracteres.
     while (fgets(linea, sizeof(linea), fichero) != NULL) {
-        printf("%s", linea); // Mostrar cada línea en pantalla
+        printf("%s", linea); // Mostrar cada línea de 256 caracteres recursivamente
     }
 
     // Cerrar el fichero después de leer
